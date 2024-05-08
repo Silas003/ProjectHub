@@ -11,7 +11,7 @@ const Hero = () => {
       </p>
 
       <Link
-        className="bg-primary hover:bg-seconday mt-4 p-4 w-40 rounded-md text-center text-white"
+        className="bg-primary hover:bg-secondary mt-4 p-4 w-40 rounded-md text-center text-white"
         href="#"
       >
         Upload yours

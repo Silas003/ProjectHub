@@ -24,7 +24,7 @@ const Navbar = () => {
             placeholder="Search Projects"
             className="p-2 outline-none shadow-md"
           />
-          <button className="text-white bg-primary hover:bg-seconday p-2 w-24 rounded-sm">
+          <button className="text-white bg-primary hover:bg-secondary p-2 w-24 rounded-sm">
             Search
           </button>
         </div>
