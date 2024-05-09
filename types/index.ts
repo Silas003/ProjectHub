@@ -7,3 +7,11 @@ interface Project {
   student: string;
   type: "final" | "mini" | "personal";
 }
+
+interface ProjectDetail extends Project {
+  contributors: {
+    name: string;
+    role: string;
+  }[];
+  link: string;
+}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CSSProperties } from "react";
 import { BsCircleFill } from "react-icons/bs";
 
@@ -24,7 +25,8 @@ const getProjectColor = (type: Project["type"]): CSSProperties["color"] => {
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const projectColor = getProjectColor(project.type);
   return (
-    <div
+    <Link
+      href={`/projects/${project.id}`}
       style={{
         borderColor: projectColor
       }}
@@ -44,7 +46,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <p className="text-gray-500">@{project.student}</p>
         <p className="text-gray-500">{project.year}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
