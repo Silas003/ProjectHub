@@ -5,4 +5,5 @@ interface Project {
   desc: string;
   year: string;
   student: string;
+  type: "final" | "mini" | "personal";
 }
