@@ -1,3 +1,4 @@
+import FeaturedProjects from "@/components/FeaturedProjects";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 
@@ -7,6 +8,8 @@ export default function Home() {
       <Navbar />
 
       <Hero />
+
+      <FeaturedProjects />
     </main>
   );
 }
