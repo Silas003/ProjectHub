@@ -14,7 +14,11 @@ const FeaturedProjects = () => {
     ] as Project["type"]
   }));
 
-  return <ProjectList title="Featured projects" projects={projects} />;
+  return (
+    <div id="featured">
+      <ProjectList title="Featured projects" projects={projects} />;
+    </div>
+  );
 };
 
 export default FeaturedProjects;

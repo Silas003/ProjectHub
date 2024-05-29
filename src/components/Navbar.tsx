@@ -1,33 +1,39 @@
+"use client";
 import Link from "next/link";
 
 const Navbar = () => {
   const navLinks = [
-    { label: "Final year projects", href: "/fyp" },
-    { label: "Mini projects", href: "/mp" }
+    { label: "Featured projects", href: "#featured" },
+    { label: "Recent projects", href: "#recent" }
   ];
 
+  const scrollToView = (id: string) => {
+    const section = document.querySelector(id)!;
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
-    <div className="flex justify-between items-center  p-6 shadow-md ">
-      <span>Project Hub </span>
+    <div className=" mr-4 ml-4 flex justify-between items-center text-white">
+      <span>Project Hub Logo </span>
 
       <div className="flex items-center">
         <div>
           {navLinks.map(({ label, href }) => (
-            <Link key={href} href={href} className="mr-4">
+            <button
+              key={href}
+              onClick={() => scrollToView(href)}
+              className="mr-4 p-2"
+            >
               {label}
-            </Link>
+            </button>
           ))}
         </div>
-
-        <div>
-          <input
-            placeholder="Search Projects"
-            className="p-2 outline-none shadow-md"
-          />
-          <button className="text-white bg-primary hover:bg-secondary p-2 w-24 rounded-sm">
-            Search
-          </button>
-        </div>
+        <Link
+          className="bg-primary hover:bg-secondary mt-4 p-2 w-40 rounded-md text-center text-white"
+          href="#"
+        >
+          Upload yours
+        </Link>
       </div>
     </div>
   );

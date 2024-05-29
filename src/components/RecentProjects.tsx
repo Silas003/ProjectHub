@@ -14,7 +14,11 @@ const RecentProjects = () => {
     ] as Project["type"]
   }));
 
-  return <ProjectList title="Recent projects" projects={projects} />;
+  return (
+    <div id="recent">
+      <ProjectList title="Recent projects" projects={projects} />;
+    </div>
+  );
 };
 
 export default RecentProjects;
