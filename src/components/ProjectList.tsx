@@ -1,4 +1,8 @@
+"use client";
+import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import ProjectCard from "./ProjectCard";
 
 interface ProjectListProps {
@@ -7,13 +11,39 @@ interface ProjectListProps {
   showHeader?: boolean;
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 }
+};
+
 const ProjectList = ({
   title,
   projects,
   showHeader = true
 }: ProjectListProps) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, inView]);
+
   return (
-    <div className="mt-8 ml-4">
+    <div className="mt-8 ml-4" ref={ref}>
       {showHeader && (
         <div>
           <div className="flex justify-between mr-4">
@@ -29,11 +59,18 @@ const ProjectList = ({
         </div>
       )}
 
-      <div className="grid grid-cols-3">
+      <motion.div
+        className="grid grid-cols-3"
+        initial="hidden"
+        animate={controls}
+        variants={containerVariants}
+      >
         {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <motion.div key={project.id} variants={itemVariants}>
+            <ProjectCard project={project} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
